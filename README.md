@@ -1,2 +1,2 @@
 # nutanayat
-@amshekar,@seshupapolu,@Nithyanantham,@kp
+@amshekar,@seshupapolu,@Nithyanantham, KP
