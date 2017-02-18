@@ -4,6 +4,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 {
     log.Info("C# HTTP trigger function processed a request.");
 
+// Url:  "https://seshuapi.azurewebsites.net/api/HttpTriggerCSharp1?code=sukumar&event=NewCall&cid=00919948740074&called_number=914039411020&sid=9479774413121603&circle=ANDHRA+PRADESH&operator=Idea&cid_type=&cid_e164=00919948740074&request_time=2017-02-18+23%3A38%3A32&cid_country="
     // parse query parameter
     //string name = req.GetQueryNameValuePairs()
       //  .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
