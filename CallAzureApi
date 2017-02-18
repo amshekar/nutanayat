@@ -1,0 +1,59 @@
+using System.Net;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
+
+    // parse query parameter
+    //string name = req.GetQueryNameValuePairs()
+      //  .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+        //.Value;
+        
+        // cid=00919948740074
+        // called_number=914039411020&sid=9479774413121603&
+        // circle=ANDHRA+PRADESH&operator=Idea&
+        // cid_type=&cid_e164=00919948740074&
+        // request_time=2017-02-18+23%3A38%3A32&
+        // cid_country="
+
+        string eventValue = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "event", true) == 0)
+        .Value;
+        string cid = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "cid", true) == 0)
+        .Value;
+        string called_number = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "called_number", true) == 0)
+        .Value;
+         string sid = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "sid", true) == 0)
+        .Value;
+        string circle = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "circle", true) == 0)
+        .Value;
+        string cid_type = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "cid_type", true) == 0)
+        .Value;
+        string cid_e164 = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "cid_e164", true) == 0)
+        .Value;
+        string request_time = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "request_time", true) == 0)
+        .Value;
+        // string time = req.GetQueryNameValuePairs()
+        // .FirstOrDefault(q => string.Compare(q.Key, "time", true) == 0)
+        // .Value;
+        //Some
+      //var a="seshu";
+
+    // Get request body
+    //dynamic data = await req.Content.ReadAsAsync<object>();
+
+    // Set name to query string or body data
+    //name = name ?? data?.name;
+log.Info("Hello " + eventValue +" "+called_number+" "+circle+" " +request_time+" "+ cid_e164 );
+     return req.CreateResponse(HttpStatusCode.OK, "Hello " + eventValue +" "+" "+circle+ " "+ " "+request_time);
+    //name == null
+        //  ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
+        //  : req.CreateResponse(HttpStatusCode.OK, "Hello " + eventValue +" " +" "+msg+ " "+ " "+time);
+}
